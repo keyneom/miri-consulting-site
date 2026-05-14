@@ -65,3 +65,5 @@ BASE_URL=http://localhost:4322 npm run test:visual:update
 ## Deploy
 
 Pushes to `master` run `.github/workflows/deploy.yml`. After the first successful deploy, set GitHub Pages source to **GitHub Actions** in repository settings.
+
+The workflow calls the [GitHub Pages API](https://docs.github.com/en/rest/pages/pages#get-a-apiname--pages-site) before `npm run build`. If **`cname`** is set (custom domain), it sets `ASTRO_SITE_URL` to `https://<cname>` and `ASTRO_BASE` to `/`. Otherwise it uses the **project** URL `https://<owner>.github.io/<repo>` with `ASTRO_BASE` `/<repo>/`. Repos named `*.github.io` use `https://<that-name>` and base `/`. If the Pages site does not exist yet (first deploy), it uses the same defaults as the no-custom-domain case. To override locally, set `ASTRO_BASE` and `ASTRO_SITE_URL` when running `npm run build`.

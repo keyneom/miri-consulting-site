@@ -1,5 +1,6 @@
 ---
 import { analytics, vendor } from '../../data/site';
+import { rootPath } from '../../utils/rootPath';
 
 interface Props {
   includeFinsweet?: boolean;
@@ -18,7 +19,7 @@ const clarityId = analytics.clarityProjectId;
     if (typeof w[g].push == 'function') w[g].push.apply(w[g], Array.isArray(i) ? i : [i]);
   })(window, [gaId], 'google_tags_first_party');
 </script>
-<script async is:inline src={vendor.firstPartyTag}></script>
+<script async is:inline src={rootPath(vendor.firstPartyTag)}></script>
 <script is:inline define:vars={{ gaId }}>
   window.dataLayer = window.dataLayer || [];
   function gtag() {

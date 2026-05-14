@@ -19,6 +19,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Resolve Astro site URL and base (custom domain vs project pages)
+        id: pages_target
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          OWNER="${{ github.repository_owner }}"
+          NAME="${{ github.event.repository.name }}"
+          REPO="${{ github.repository }}"
+
+          if [[ "${NAME}" == *.github.io ]]; then
+            DEFAULT_SITE="https://${NAME}"
+            DEFAULT_BASE="/"
+          else
+            DEFAULT_SITE="https://${OWNER}.github.io/${NAME}"
+            DEFAULT_BASE="/${NAME}/"
+          fi
+
+          HTTP_CODE="$(curl -sS -o /tmp/pages.json -w "%{http_code}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            "https://api.github.com/repos/${REPO}/pages" || printf '%s' "000")"
+
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "GitHub Pages metadata not available (HTTP ${HTTP_CODE}); using defaults."
+            echo "site_url=${DEFAULT_SITE}" >> "${GITHUB_OUTPUT}"
+            echo "astro_base=${DEFAULT_BASE}" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          CNAME="$(jq -r '.cname // ""' /tmp/pages.json | sed 's/\r$//' | sed 's/\.$//')"
+          if [ -n "${CNAME}" ] && [ "${CNAME}" != "null" ]; then
+            echo "Using custom Pages domain: ${CNAME}"
+            echo "site_url=https://${CNAME}" >> "${GITHUB_OUTPUT}"
+            echo "astro_base=/" >> "${GITHUB_OUTPUT}"
+          else
+            echo "Using default GitHub Pages URL (no custom domain in API)."
+            echo "site_url=${DEFAULT_SITE}" >> "${GITHUB_OUTPUT}"
+            echo "astro_base=${DEFAULT_BASE}" >> "${GITHUB_OUTPUT}"
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -26,6 +66,9 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+        env:
+          ASTRO_BASE: ${{ steps.pages_target.outputs.astro_base }}
+          ASTRO_SITE_URL: ${{ steps.pages_target.outputs.site_url }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

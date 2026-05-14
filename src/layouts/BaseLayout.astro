@@ -1,5 +1,6 @@
 ---
 import { analytics, site, vendor } from '../data/site';
+import { rootPath } from '../utils/rootPath';
 import HeadAnalytics from '../components/analytics/HeadAnalytics.astro';
 import inlineGlobals from '../styles/inline-globals.css?raw';
 
@@ -52,8 +53,8 @@ const canonical = new URL(canonicalPath, site.url).href;
     {analytics.googleSiteVerification ? (
       <meta content={analytics.googleSiteVerification} name="google-site-verification" />
     ) : null}
-    <link href={vendor.webflowSharedCss} rel="stylesheet" type="text/css" />
-    <link href={vendor.overridesCss} rel="stylesheet" type="text/css" />
+    <link href={rootPath(vendor.webflowSharedCss)} rel="stylesheet" type="text/css" />
+    <link href={rootPath(vendor.overridesCss)} rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" />
     <script src={vendor.webfont} type="text/javascript" is:inline></script>
@@ -68,8 +69,8 @@ const canonical = new URL(canonicalPath, site.url).href;
     <script is:inline>
       !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
     </script>
-    <link href={vendor.favicon} rel="shortcut icon" type="image/x-icon" />
-    <link href={vendor.webclip} rel="apple-touch-icon" />
+    <link href={rootPath(vendor.favicon)} rel="shortcut icon" type="image/x-icon" />
+    <link href={rootPath(vendor.webclip)} rel="apple-touch-icon" />
     <link href={canonical} rel="canonical" />
     <HeadAnalytics includeFinsweet={includeFinsweet} />
     <slot name="head" />
