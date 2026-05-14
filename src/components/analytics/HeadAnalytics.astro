@@ -9,6 +9,8 @@ const { includeFinsweet = false } = Astro.props;
 const gaId = analytics.gaMeasurementId;
 const gtmId = analytics.gtmId;
 const crispId = analytics.crispWebsiteId;
+const claritySrc = vendor.clarity;
+const n3phmjqqSrc = vendor.n3phmjqq;
 ---
 
 <script is:inline define:vars={{ gaId }}>
@@ -38,13 +40,19 @@ const crispId = analytics.crispWebsiteId;
 <script is:inline define:vars={{ crispId }}>
   window.$crisp = [];
   window.CRISP_WEBSITE_ID = crispId;
-  (function () {
+
+  function loadCrisp() {
+    if (window.__miriCrispLoaded) return;
+    window.__miriCrispLoaded = true;
     const d = document;
     const s = d.createElement('script');
     s.src = 'https://client.crisp.chat/l.js';
     s.async = 1;
     d.getElementsByTagName('head')[0].appendChild(s);
-  })();
+  }
+
+  window.setTimeout(loadCrisp, 3000);
+  window.addEventListener('scroll', loadCrisp, { once: true, passive: true });
 </script>
 <meta name="facebook-domain-verification" content={analytics.facebookDomainVerification} />
 <script is:inline define:vars={{ gtmId }}>
@@ -61,5 +69,22 @@ const crispId = analytics.crispWebsiteId;
 </script>
 <script id="cookieyes" type="text/javascript" src={vendor.cookieYes} is:inline></script>
 {includeFinsweet ? <script async src={vendor.finsweetModal} is:inline></script> : null}
-<script src={vendor.clarity} type="text/javascript" is:inline></script>
-<script src={vendor.n3phmjqq} type="text/javascript" is:inline></script>
+<script is:inline define:vars={{ claritySrc, n3phmjqqSrc }}>
+  function loadDeferredAnalyticsScripts() {
+    if (window.__miriDeferredAnalyticsLoaded) return;
+    window.__miriDeferredAnalyticsLoaded = true;
+
+    for (const src of [claritySrc, n3phmjqqSrc]) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.type = 'text/javascript';
+      document.head.appendChild(script);
+    }
+  }
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadDeferredAnalyticsScripts);
+  } else {
+    window.setTimeout(loadDeferredAnalyticsScripts, 2000);
+  }
+</script>

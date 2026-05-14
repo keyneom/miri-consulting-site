@@ -50,7 +50,9 @@ const canonical = new URL(canonicalPath, site.url).href;
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content={robots} name="robots" />
-    <meta content={analytics.gtmId} name="google-site-verification" />
+    {analytics.googleSiteVerification ? (
+      <meta content={analytics.googleSiteVerification} name="google-site-verification" />
+    ) : null}
     <link href={vendor.webflowSharedCss} rel="stylesheet" type="text/css" />
     <link href={vendor.overridesCss} rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -60,6 +62,7 @@ const canonical = new URL(canonicalPath, site.url).href;
       WebFont.load({
         google: {
           families: ['Inter:300,400,500,600,700', 'Noto Sans:300,400,500,600,700'],
+          display: 'swap',
         },
       });
     </script>

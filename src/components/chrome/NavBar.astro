@@ -1,14 +1,6 @@
 ---
-import navbarHome from '../../partials/navbar-home.html?raw';
-import navbarLegal from '../../partials/navbar-legal.html?raw';
+import navbar from '../../partials/navbar-home.html?raw';
 import RawHtml from '../RawHtml.astro';
-
-interface Props {
-  variant?: 'home' | 'legal';
-}
-
-const { variant = 'home' } = Astro.props;
-const html = variant === 'legal' ? navbarLegal : navbarHome;
 ---
 
-<RawHtml html={html} />
+<RawHtml html={navbar} />

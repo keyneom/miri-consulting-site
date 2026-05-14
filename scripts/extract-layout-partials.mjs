@@ -40,25 +40,12 @@ await write(
 );
 
 await write(
-  'src/partials/navbar-legal.html',
-  extractSection(
-    privacy,
-    '<div data-animation="default" class="navbar2_component w-nav"',
-    '<header class="section_header1">',
-  ),
-);
-
-await write(
   'src/partials/legal-privacy-body.html',
   extractSection(privacy, '<header class="section_header1">', '<footer class="footer7_component">'),
 );
 await write(
   'src/partials/legal-terms-body.html',
   extractSection(terms, '<header class="section_header1">', '<footer class="footer7_component">'),
-);
-await write(
-  'src/partials/footer-legal.html',
-  extractSection(privacy, '<footer class="footer7_component">', '</footer>', { includeEnd: true }),
 );
 
 const main = extractSection(home, '<main class="main-wrapper">', '</main>');
@@ -81,8 +68,4 @@ for (const [name, start, end] of sections) {
 await write(
   'src/partials/body-scripts-home.html',
   extractSection(home, '<script src="d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min', '</body>'),
-);
-await write(
-  'src/partials/body-scripts-legal.html',
-  extractSection(privacy, '<script src="d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min', '</body>'),
 );

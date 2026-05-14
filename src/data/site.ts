@@ -35,6 +35,7 @@ export const analytics = {
   crispWebsiteId: '7830bc37-7412-431c-9b07-904db9f2ba9a',
   cookieYesClientId: 'a9444bde0e91feb16b7f6557',
   facebookDomainVerification: 'mlk59ybu44651lzcbhhxjfl8vfae8q',
+  googleSiteVerification: null,
 } as const;
 
 export const vendor = {

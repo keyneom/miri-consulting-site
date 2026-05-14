@@ -1,14 +1,6 @@
 ---
-import footerHome from '../../partials/footer.html?raw';
-import footerLegal from '../../partials/footer-legal.html?raw';
+import footer from '../../partials/footer.html?raw';
 import RawHtml from '../RawHtml.astro';
-
-interface Props {
-  variant?: 'home' | 'legal';
-}
-
-const { variant = 'home' } = Astro.props;
-const html = variant === 'legal' ? footerLegal : footerHome;
 ---
 
-<RawHtml html={html} />
+<RawHtml html={footer} />

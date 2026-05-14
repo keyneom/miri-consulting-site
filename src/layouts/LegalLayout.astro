@@ -5,7 +5,7 @@ import Footer from '../components/chrome/Footer.astro';
 import { rewriteAssetPaths } from '../utils/rewriteAssetPaths';
 import { site } from '../data/site';
 import inlineGlobals from '../styles/inline-globals.css?raw';
-import bodyScriptsLegal from '../partials/body-scripts-legal.html?raw';
+import bodyScripts from '../partials/body-scripts-home.html?raw';
 
 interface Props {
   canonicalPath: string;
@@ -18,6 +18,11 @@ interface Props {
 const { canonicalPath, bodyClass, webflowPageId, bodyHtml, headHtml } = Astro.props;
 const canonical = new URL(canonicalPath, site.url).href;
 const head = rewriteAssetPaths(headHtml)
+  .replace(/<meta content="[^"]*" name="google-site-verification"\/>/, '')
+  .replace(
+    /(families:\s*\[[^\]]+\])(\s*\}\s*\}\);)/,
+    "$1, display: 'swap'$2",
+  )
   .replace(/<link href="[^"]+" rel="canonical"\/>/, `<link href="${canonical}" rel="canonical"/>`)
   .replace(
     '<meta content="width=device-width, initial-scale=1" name="viewport"/>',
@@ -39,11 +44,11 @@ const head = rewriteAssetPaths(headHtml)
         <style is:inline is:global set:html={inlineGlobals}></style>
       </div>
       <main class="main-wrapper">
-        <NavBar variant="legal" />
+        <NavBar />
         <RawHtml html={bodyHtml} />
-        <Footer variant="legal" />
+        <Footer />
       </main>
     </div>
-    <RawHtml html={bodyScriptsLegal} />
+    <RawHtml html={bodyScripts} />
   </body>
 </html>
