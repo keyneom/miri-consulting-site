@@ -3,6 +3,20 @@
   box-sizing: border-box;
 }
 
+.spline-scene canvas {
+  pointer-events: none;
+}
+
+.section_logo3 {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.section_logo3 .logo3_component {
+  transform: none !important;
+  will-change: auto;
+}
+
 .testimonial23_mask {
   overflow: visible;
 }

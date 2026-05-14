@@ -1,9 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import RawHtml from '../RawHtml.astro';
+import { applyClientLogoImages } from '../../utils/home/applyClientLogoImages';
+import { sortByOrder } from '../../utils/home/sortEntries';
+import { stripWebflowInteractionIds } from '../../utils/stripWebflowInteractionIds';
 import html from '../../partials/home/client-logo-marquee.html?raw';
 
-await getCollection('clientLogos');
+const logos = sortByOrder(await getCollection('clientLogos'));
+const rendered = applyClientLogoImages(
+  stripWebflowInteractionIds(html),
+  logos.map((entry) => ({
+    src: entry.data.logo.src,
+    alt: entry.data.logoAlt,
+    sizeClass: entry.data.sizeClass,
+  })),
+);
 ---
 
-<RawHtml html={html} />
+<RawHtml html={rendered} />

@@ -212,7 +212,6 @@ margin: 0rem !important;
   min-height: 4.75rem;
   opacity: 1 !important;
   animation: logo-marquee 44s linear infinite;
-  will-change: transform;
 }
 
 .logo-marquee:hover {

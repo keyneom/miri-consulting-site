@@ -1,9 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import RawHtml from '../RawHtml.astro';
+import { applyServiceSummaries } from '../../utils/home/applyServiceSummaries';
+import { sortByOrder } from '../../utils/home/sortEntries';
 import html from '../../partials/home/services-tabs.html?raw';
 
-await getCollection('services');
+const services = sortByOrder(await getCollection('services'));
+const rendered = applyServiceSummaries(
+  html,
+  services.map((entry) => ({
+    heading: entry.data.cardHeading,
+    body: entry.data.cardBody,
+  })),
+);
 ---
 
-<RawHtml html={html} />
+<RawHtml html={rendered} />

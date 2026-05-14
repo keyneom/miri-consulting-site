@@ -1,4 +1,17 @@
 (() => {
+  function relaxHeroSplineScrollCapture() {
+    document.querySelectorAll('.spline-scene canvas').forEach((canvas) => {
+      canvas.style.pointerEvents = 'none';
+    });
+  }
+
+  function relaxLogoBandTransforms() {
+    document.querySelectorAll('.section_logo3 .logo3_component').forEach((element) => {
+      element.style.removeProperty('transform');
+      element.style.removeProperty('will-change');
+    });
+  }
+
   function modalSelector(suffix) {
     return '[fs-modal-element="modal' + suffix + '"]';
   }
@@ -37,5 +50,11 @@
     document.querySelectorAll('.fs_modal-1_popup-2').forEach((modal) => {
       setModalDisplay(modal, 'none');
     });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    relaxHeroSplineScrollCapture();
+    relaxLogoBandTransforms();
+    document.addEventListener('w-spline-load', relaxHeroSplineScrollCapture);
   });
 })();
