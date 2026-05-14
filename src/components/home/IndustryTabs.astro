@@ -1,14 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import RawHtml from '../RawHtml.astro';
-import { applyIndustryBodies } from '../../utils/home/applyIndustryBodies';
+import { applyIndustryContent } from '../../utils/home/applyIndustryContent';
 import { sortByOrder } from '../../utils/home/sortEntries';
 import html from '../../partials/home/industry-tabs.html?raw';
 
 const industries = sortByOrder(await getCollection('industries'));
-const rendered = applyIndustryBodies(
+const rendered = applyIndustryContent(
   html,
-  industries.map((entry) => entry.data.body),
+  industries.map((entry) => ({
+    tabLabel: entry.data.tabLabel,
+    body: entry.data.body,
+    imageSrc: entry.data.image.src,
+    imageAlt: entry.data.imageAlt,
+  })),
 );
 ---
 

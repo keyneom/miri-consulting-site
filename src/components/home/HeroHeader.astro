@@ -1,15 +1,23 @@
 ---
+import { getEntry } from 'astro:content';
 import { site } from '../../data/site';
 import RawHtml from '../RawHtml.astro';
+import { applyHeroContent } from '../../utils/home/applyHeroContent';
 import { rewriteAssetPaths } from '../../utils/rewriteAssetPaths';
 import html from '../../partials/home/hero-header.html?raw';
 
-const rendered = rewriteAssetPaths(html)
-  .replaceAll(site.splineScene, site.splineSceneLocal)
-  .replaceAll(
-    encodeURIComponent(site.splineScene),
-    site.splineSceneLocal,
-  );
+const hero = await getEntry('home', 'hero');
+const rendered = applyHeroContent(
+  rewriteAssetPaths(html)
+    .replaceAll(site.splineScene, site.splineSceneLocal)
+    .replaceAll(encodeURIComponent(site.splineScene), site.splineSceneLocal),
+  {
+    headline: hero?.data.headline ?? 'Your Vision<br/>Our Expertise',
+    subheadline:
+      hero?.data.subheadline ??
+      'We help landscape and construction companies streamline systems, master their software, and gain confidence in their numbers to drive profitable growth.',
+  },
+);
 ---
 
 <RawHtml html={rendered} />

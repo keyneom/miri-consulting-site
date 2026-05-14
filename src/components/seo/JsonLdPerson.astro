@@ -9,7 +9,7 @@ const items = team
     '@type': 'Person',
     name: member.data.name,
     jobTitle: member.data.roleLabel,
-    description: member.data.bio,
+    description: member.data.bio.replace(/\s*\n\s*\n\s*/g, ' ').trim(),
     worksFor: {
       '@type': 'Organization',
       name: 'Miri Consulting',

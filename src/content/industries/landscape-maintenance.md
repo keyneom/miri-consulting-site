@@ -3,7 +3,7 @@ name: "Landscape Maintenance"
 slug: "landscape-maintenance"
 order: 1
 tabLabel: "Landscape Maintenance"
-body: "Subcontractor mayhem, slip and fall liability, and 3am dispatches. We help snow operations implement bulletproof systems for tracking, documenting, and invoicing so you can stay protected and bill fast, even on no sleep."
+body: "Crews miss billable details, receipts get lost in the fray, and the office spends hours chasing down info. We give your team simple ways to track services and create methodical workflows that grow with your portfolio and make Aspire work for your team."
 image: "../../assets/industries/landscape-maintenance.jpg"
 imageAlt: "Landscape Maintenance"
 ---

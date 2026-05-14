@@ -92,7 +92,16 @@ const clientLogos = defineCollection({
     }),
 });
 
+const home = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/home' }),
+  schema: z.object({
+    headline: z.string(),
+    subheadline: z.string(),
+  }),
+});
+
 export const collections = {
+  home,
   team,
   services,
   industries,

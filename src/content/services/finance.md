@@ -12,6 +12,8 @@ modalImage: "../../assets/services/finance-modal.jpg"
 modalImageAlt: "Comprehensive Financial Management"
 subServices:
   - title: "Receipt Entry & Bookkeeping"
+    description: "Scan us your receipts and we'll handle overnight entry, update item costs, reconcile accounts, and keep your transaction records clean and accurate."
+  - title: "Quickbooks & Aspire End-of-Month Close"
     description: "We provide hands-on support to ensure a smooth month-end close by reconciling records, resolving discrepancies, and keeping your systems in sync."
   - title: "Item Catalog Management"
     description: "We clean up item catalogs by standardizing names, updating costs, and aligning them across systems for accurate estimates and reports."

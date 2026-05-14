@@ -1,16 +1,54 @@
 ---
 import { getCollection } from 'astro:content';
 import RawHtml from '../RawHtml.astro';
+import { applyServiceModals } from '../../utils/home/applyServiceModals';
+import { applyServiceSubServices } from '../../utils/home/applyServiceSubServices';
 import { applyServiceSummaries } from '../../utils/home/applyServiceSummaries';
+import { applyTeamModalBios } from '../../utils/home/applyTeamModalBios';
+import { applyTeamModalExpertise } from '../../utils/home/applyTeamModalExpertise';
+import { applyTeamModalHeadshots } from '../../utils/home/applyTeamModalHeadshots';
 import { sortByOrder } from '../../utils/home/sortEntries';
 import html from '../../partials/home/services-tabs.html?raw';
 
 const services = sortByOrder(await getCollection('services'));
-const rendered = applyServiceSummaries(
-  html,
-  services.map((entry) => ({
-    heading: entry.data.cardHeading,
-    body: entry.data.cardBody,
+const team = sortByOrder(await getCollection('team'));
+const rendered = applyTeamModalHeadshots(
+  applyTeamModalExpertise(
+    applyTeamModalBios(
+      applyServiceSubServices(
+        applyServiceModals(
+          applyServiceSummaries(
+            html,
+            services.map((entry) => ({
+              heading: entry.data.cardHeading,
+              body: entry.data.cardBody,
+            })),
+          ),
+          services.map((entry) => ({
+            heading: entry.data.modalHeading,
+            subheading: entry.data.modalSubheading,
+          })),
+        ),
+        services.map((entry) => ({
+          modalHeading: entry.data.modalHeading,
+          subServices: entry.data.subServices,
+        })),
+      ),
+      team.map((entry) => ({
+        name: entry.data.name,
+        bio: entry.data.bio,
+      })),
+    ),
+    team.map((entry) => ({
+      name: entry.data.name,
+      functionalExpertise: entry.data.functionalExpertise,
+      industryExperience: entry.data.industryExperience,
+    })),
+  ),
+  team.map((entry) => ({
+    name: entry.data.name,
+    src: entry.data.headshot.src,
+    alt: entry.data.headshotAlt,
   })),
 );
 ---

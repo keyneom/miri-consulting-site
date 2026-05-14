@@ -12,6 +12,8 @@ modalImage: "../../assets/services/hr-modal.jpg"
 modalImageAlt: "Human Resource Consulting"
 subServices:
   - title: "HR Leadership Consulting"
+    description: "Strengthen management capabilities with tailored HR strategies that improve team structure and decision-making."
+  - title: "Performance Management Systems"
     description: "Implement data-driven processes to track, measure, and enhance employee performance."
   - title: "Workforce Planning & Training"
     description: "Develop structured training programs and long-term workforce strategies to optimize talent development."

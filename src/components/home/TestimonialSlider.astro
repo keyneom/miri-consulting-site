@@ -1,14 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import RawHtml from '../RawHtml.astro';
-import { applyTestimonialQuotes } from '../../utils/home/applyTestimonialQuotes';
+import { applyTestimonialSlides } from '../../utils/home/applyTestimonialSlides';
 import { sortByOrder } from '../../utils/home/sortEntries';
 import html from '../../partials/home/testimonial-slider.html?raw';
 
 const testimonials = sortByOrder(await getCollection('testimonials'));
-const rendered = applyTestimonialQuotes(
+const rendered = applyTestimonialSlides(
   html,
-  testimonials.map((entry) => entry.data.quote),
+  testimonials.map((entry) => ({
+    quote: entry.data.quote,
+    name: entry.data.name,
+    title: entry.data.title,
+    portraitSrc: entry.data.portrait.src,
+    portraitAlt: entry.data.portraitAlt,
+  })),
 );
 ---
 
