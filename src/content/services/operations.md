@@ -1,0 +1,27 @@
+---
+name: "Operations"
+slug: "operations"
+order: 1
+cardHeading: "Optimize Your Workflow"
+cardBody: "We help landscape, snow, and construction companies simplify their operations by implementing software, refining processes, and making tools like Aspire and Buildertrend work for their team."
+cardImage: "../../assets/services/operations-card.jpg"
+cardImageAlt: "Optimize Your Workflow"
+modalHeading: "Operations Management Consulting"
+modalSubheading: "We help landscape, snow, and construction companies simplify their operations by implementing software, refining processes, and making tools like Aspire and Buildertrend work for their team."
+modalImage: "../../assets/services/operations-modal.jpeg"
+modalImageAlt: "Operations Management Consulting"
+subServices:
+  - title: "Aspire, Buildertrend & Software Configuration"
+    description: "Maximize your business software by customizing configurations, standardizing templates, and aligning workflows so your systems support the way your team actually works."
+  - title: "Estimating & Pricing"
+    description: "Build fast, accurate estimates by integrating takeoff tools like PropertyIntel or Square Takeoff with your tech stack. We help you protect margin and price with confidence."
+  - title: "Project Management"
+    description: "Keep jobs on track and clients in the loop. We implement systems that improve scheduling, coordination, and issue tracking to help your team deliver a smoother customer experience."
+  - title: "Organizational Structure"
+    description: "We clarify roles, responsibilities, and reporting lines to reduce confusion, improve accountability, and set your teams up to scale."
+  - title: "Fleet Management"
+    description: "We build simple tracking systems for repairs, preventative maintenance, and fuel logs so you can spot problems early and keep trucks on the road."
+  - title: "Systems & Process Optimization"
+    description: "We document and simplify the way work gets done so everyone knows what \"done right\" looks like, and your systems scale with your growth."
+legacyModalId: "modal"
+---

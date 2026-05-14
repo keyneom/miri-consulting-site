@@ -1,0 +1,52 @@
+export const site = {
+  name: 'Miri Consulting',
+  title: 'Miri Consulting | Consulting Services for Landscape and Construction Companies',
+  description:
+    "Miri is a consulting company that helps landscape, construction, and snow removal companies customize and integrate Aspire, Buildertrend, Quickbooks, and other industry standard softwares. Our Teams specialize in project management, financial forecasting and month-end close, HR onboarding and counseling, and digital design assistance. We work with you directly to strategize solutions for your company's specific needs, and we continue to support you as you implement new systems and grow your business.",
+  url: 'https://www.miri-consulting.com',
+  ogImage:
+    'https://cdn.prod.website-files.com/64f363b4ba0fc1362362824f/6814fec732b8cad8fad64a0d_Home%20Page%20(1).png',
+  splineScene: 'https://prod.spline.design/g1zcjk-5vLl2eWGi/scene.splinecode',
+  joinTeamFormUrl:
+    'https://docs.google.com/forms/d/e/1FAIpQLSeBoXrL-grJIQg5PPhon73buKD1aUytT0h6uwXAohbzVDcwlw/viewform?usp=sharing',
+  webflowSiteId: '64f363b4ba0fc1362362824f',
+  webflowHomePageId: '67cf44591eba6d97f960df05',
+  webflowPrivacyPageId: '67f94c40dab2e5c3b96a8efd',
+  webflowTermsPageId: '67f96117bb872567f22b2800',
+  copyright: '© 2025 Miri. All rights reserved.',
+} as const;
+
+export const navLinks = [
+  { href: 'index.html#about', label: 'About' },
+  { href: 'index.html#industries', label: 'Industries' },
+  { href: 'index.html#testimonials', label: 'Testimonials' },
+  { href: 'index.html#services', label: 'Services' },
+  { href: 'index.html#people', label: 'People' },
+] as const;
+
+export const cta = {
+  calendlyUrl: 'https://calendly.com/ramelsanchez/chat',
+  calendlyLegalUrl: 'https://calendly.com/ramel-miri/chat',
+} as const;
+
+export const analytics = {
+  gtmId: 'GTM-N3PHMJQQ',
+  gaMeasurementId: 'G-C1T2VCV7HD',
+  crispWebsiteId: '7830bc37-7412-431c-9b07-904db9f2ba9a',
+  cookieYesClientId: 'a9444bde0e91feb16b7f6557',
+  facebookDomainVerification: 'mlk59ybu44651lzcbhhxjfl8vfae8q',
+} as const;
+
+export const vendor = {
+  webflowSharedCss: '/vendor/webflow/css/miri-staging.webflow.shared.47e7c4151.css',
+  overridesCss: '/miri-static-overrides.css',
+  jquery: '/vendor/jquery/jquery-3.5.1.min.js',
+  webfont: '/vendor/webfont/webfont.js',
+  cookieYes: '/vendor/cookieyes/script.js',
+  finsweetModal: '/vendor/finsweet/modal.js',
+  clarity: '/vendor/tags/clarity_script-1.4.7.js',
+  n3phmjqq: '/vendor/tags/n3phmjqq-1.1.1.js',
+  firstPartyTag: '/vendor/tags/first-party/tvAAsIKEswP0uufI_5zRB4CSZhM',
+  favicon: '/vendor/webflow/assets/655e49bdaf2f0d125f6123cb_favicon.png',
+  webclip: '/vendor/webflow/assets/655e49c25e6e56fce2fee4ae_webclip.png',
+} as const;

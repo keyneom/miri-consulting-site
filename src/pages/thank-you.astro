@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Thank You | Miri Consulting"
+  description={site.description}
+  canonicalPath="/thank-you.html"
+  bodyClass="body"
+  webflowPageId={site.webflowHomePageId}
+  robots="noindex,nofollow"
+>
+  <main class="main-wrapper">
+    <section class="section_header1">
+      <div class="padding-global">
+        <div class="container-small">
+          <div class="padding-section-large">
+            <h1 class="heading">Thank you</h1>
+            <p class="text-size-medium">We received your submission and will be in touch soon.</p>
+            <a href="/" class="button w-button">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

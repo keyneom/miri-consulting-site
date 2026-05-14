@@ -1,0 +1,27 @@
+---
+name: "Digital"
+slug: "digital"
+order: 3
+cardHeading: "Elevate Your Presence"
+cardBody: "We design practical, integrated digital solutions that support real business operations. From software systems to branded tools, everything we build is focused on improving efficiency, clarity, and client communication."
+cardImage: "../../assets/services/digital-card.jpg"
+cardImageAlt: "Elevate Your Presence"
+modalHeading: "Digital Design & Solutions Architecture"
+modalSubheading: "We design practical, integrated digital solutions that support real business operations. From software systems to branded tools, everything we build is focused on improving efficiency, clarity, and client communication."
+modalImage: "../../assets/services/digital-modal.jpg"
+modalImageAlt: "Digital Design & Solutions Architecture"
+subServices:
+  - title: "Custom Software Integrations"
+    description: "We map out the right digital structure for your business needs, whether that means building internal tools, improving usability, or designing workflows that scale with your team."
+  - title: "Website Development"
+    description: "We create high-performing websites that reflect your brand, showcase your services, and support the goals of your business \u2014 whether that\u2019s booking consultations, sharing your process, or building trust with potential clients."
+  - title: "Fractional CTO Services"
+    description: "We act as your technical advisor, helping you make strategic decisions, manage vendors, and guide your digital roadmap with confidence."
+  - title: "Branding & Marketing Materials"
+    description: "We create consistent, professional assets that strengthen your presence \u2014 from logos and style guides to proposal templates and slide decks."
+  - title: "App Development"
+    description: "We build custom web and mobile apps to streamline internal processes, support client interactions, or solve specific operational challenges."
+  - title: "Pitch Decks & Visual Presentations"
+    description: "We help you communicate your vision clearly with professionally designed presentations for clients, investors, or internal teams."
+legacyModalId: "modal-3"
+---

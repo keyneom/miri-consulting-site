@@ -1,0 +1,25 @@
+---
+name: "Finance"
+slug: "finance"
+order: 2
+cardHeading: "Trust Your Numbers"
+cardBody: "We turn your financial data into a reliable decision-making tool. From day-to-day bookkeeping to long-term planning, we help you stay organized, eliminate discrepancies, and build confidence in your numbers."
+cardImage: "../../assets/services/finance-card.jpg"
+cardImageAlt: "Trust Your Numbers"
+modalHeading: "Comprehensive Financial Management"
+modalSubheading: "We turn your financial data into a reliable decision-making tool. From day-to-day bookkeeping to long-term planning, we help you stay organized, eliminate discrepancies, and build confidence in your numbers."
+modalImage: "../../assets/services/finance-modal.jpg"
+modalImageAlt: "Comprehensive Financial Management"
+subServices:
+  - title: "Receipt Entry & Bookkeeping"
+    description: "We provide hands-on support to ensure a smooth month-end close by reconciling records, resolving discrepancies, and keeping your systems in sync."
+  - title: "Item Catalog Management"
+    description: "We clean up item catalogs by standardizing names, updating costs, and aligning them across systems for accurate estimates and reports."
+  - title: "Budgeting"
+    description: "We build data-driven budgets tailored to your seasonality and growth goals, helping you manage cash flow and plan ahead."
+  - title: "Financial Planning & Analysis"
+    description: "We uncover trends and cost drivers to support smarter decisions and long-term strategy."
+  - title: "Accounting Reconciliation & SOPs"
+    description: "We align your systems with your workflows and build recurring processes that make month-end close and reporting easier."
+legacyModalId: "modal-2"
+---

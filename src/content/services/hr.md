@@ -1,0 +1,25 @@
+---
+name: "Hr"
+slug: "hr"
+order: 4
+cardHeading: "Build Stronger Teams"
+cardBody: "We help businesses design and implement HR systems that support every stage of the employee lifecycle. From recruiting to performance reviews and succession planning, we create practical processes that align with your culture, tools, and team structure."
+cardImage: "../../assets/services/hr-card.jpeg"
+cardImageAlt: "Build Stronger Teams"
+modalHeading: "Human Resource Consulting"
+modalSubheading: "We help businesses design and implement HR systems that support every stage of the employee lifecycle. From recruiting to performance reviews and succession planning, we create practical processes that align with your culture, tools, and team structure."
+modalImage: "../../assets/services/hr-modal.jpg"
+modalImageAlt: "Human Resource Consulting"
+subServices:
+  - title: "HR Leadership Consulting"
+    description: "Implement data-driven processes to track, measure, and enhance employee performance."
+  - title: "Workforce Planning & Training"
+    description: "Develop structured training programs and long-term workforce strategies to optimize talent development."
+  - title: "Leadership Development & Change Management"
+    description: "Equip leaders with the skills to drive growth, manage transitions, and navigate organizational change."
+  - title: "Employee Relations & Conflict Resolution"
+    description: "Foster a positive workplace culture by addressing personnel challenges and improving team dynamics."
+  - title: "Talent Development & Retention"
+    description: "Cultivate top talent with structured development plans and retention strategies."
+legacyModalId: "modal-4"
+---

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const items = services
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((service) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.data.modalHeading,
+    description: service.data.cardBody,
+    provider: {
+      '@type': 'Organization',
+      name: 'Miri Consulting',
+    },
+  }));
+---
+
+{items.map((item) => (
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(item)} />
+))}

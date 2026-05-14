@@ -1,0 +1,13 @@
+---
+import { site } from '../../data/site';
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/vendor/webflow/assets/6525b8dcb0a19bb9e7ccde75_Miri_Horizontal_wht_BG%20(2).png`,
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(organization)} />

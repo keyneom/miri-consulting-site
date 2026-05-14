@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/chrome/NavBar.astro';
+import Footer from '../components/chrome/Footer.astro';
+import HeroHeader from '../components/home/HeroHeader.astro';
+import ClientLogoMarqueeMobile from '../components/home/ClientLogoMarqueeMobile.astro';
+import ClientLogoMarquee from '../components/home/ClientLogoMarquee.astro';
+import IndustryTabs from '../components/home/IndustryTabs.astro';
+import TestimonialSlider from '../components/home/TestimonialSlider.astro';
+import ServicesTabs from '../components/home/ServicesTabs.astro';
+import TeamGrid from '../components/home/TeamGrid.astro';
+import ContactCTA from '../components/home/ContactCTA.astro';
+import JsonLdOrganization from '../components/seo/JsonLdOrganization.astro';
+import JsonLdService from '../components/seo/JsonLdService.astro';
+import JsonLdPerson from '../components/seo/JsonLdPerson.astro';
+import RawHtml from '../components/RawHtml.astro';
+import { site } from '../data/site';
+import bodyScriptsHome from '../partials/body-scripts-home.html?raw';
+import { getCollection } from 'astro:content';
+
+await getCollection('team');
+await getCollection('services');
+await getCollection('industries');
+await getCollection('testimonials');
+await getCollection('clientLogos');
+---
+
+<BaseLayout
+  title={site.title}
+  description={site.description}
+  canonicalPath="/"
+  bodyClass="body"
+  webflowPageId={site.webflowHomePageId}
+  includeFinsweet
+>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/vendor/webflow/assets/6525b8dcb0a19bb9e7ccde75_Miri_Horizontal_wht_BG%20(2).png"
+      fetchpriority="high"
+    />
+    <JsonLdOrganization />
+    <JsonLdService />
+    <JsonLdPerson />
+  </Fragment>
+  <main class="main-wrapper">
+    <NavBar variant="home" />
+    <HeroHeader />
+    <ClientLogoMarqueeMobile />
+    <ClientLogoMarquee />
+    <IndustryTabs />
+    <TestimonialSlider />
+    <ServicesTabs />
+    <TeamGrid />
+    <ContactCTA />
+    <Footer variant="home" />
+  </main>
+  <Fragment slot="scripts">
+    <RawHtml html={bodyScriptsHome} />
+  </Fragment>
+</BaseLayout>

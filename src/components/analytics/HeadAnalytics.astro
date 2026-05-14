@@ -1,0 +1,65 @@
+---
+import { analytics, vendor } from '../../data/site';
+
+interface Props {
+  includeFinsweet?: boolean;
+}
+
+const { includeFinsweet = false } = Astro.props;
+const gaId = analytics.gaMeasurementId;
+const gtmId = analytics.gtmId;
+const crispId = analytics.crispWebsiteId;
+---
+
+<script is:inline define:vars={{ gaId }}>
+  (function (w, i, g) {
+    w[g] = w[g] || [];
+    if (typeof w[g].push == 'function') w[g].push.apply(w[g], Array.isArray(i) ? i : [i]);
+  })(window, [gaId], 'google_tags_first_party');
+</script>
+<script async is:inline src={vendor.firstPartyTag}></script>
+<script is:inline define:vars={{ gaId }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('set', 'developer_id.dZGVlNj', true);
+  gtag('set', 'developer_id.dYWYxNW', true);
+  gtag('js', new Date());
+  gtag('config', gaId);
+</script>
+<style is:inline>
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+  }
+</style>
+<script is:inline define:vars={{ crispId }}>
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = crispId;
+  (function () {
+    const d = document;
+    const s = d.createElement('script');
+    s.src = 'https://client.crisp.chat/l.js';
+    s.async = 1;
+    d.getElementsByTagName('head')[0].appendChild(s);
+  })();
+</script>
+<meta name="facebook-domain-verification" content={analytics.facebookDomainVerification} />
+<script is:inline define:vars={{ gtmId }}>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    const f = d.getElementsByTagName(s)[0];
+    const j = d.createElement(s);
+    const dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', gtmId);
+</script>
+<script id="cookieyes" type="text/javascript" src={vendor.cookieYes} is:inline></script>
+{includeFinsweet ? <script async src={vendor.finsweetModal} is:inline></script> : null}
+<script src={vendor.clarity} type="text/javascript" is:inline></script>
+<script src={vendor.n3phmjqq} type="text/javascript" is:inline></script>

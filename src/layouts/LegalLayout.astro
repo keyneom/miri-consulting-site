@@ -1,0 +1,49 @@
+---
+import RawHtml from '../components/RawHtml.astro';
+import NavBar from '../components/chrome/NavBar.astro';
+import Footer from '../components/chrome/Footer.astro';
+import { rewriteAssetPaths } from '../utils/rewriteAssetPaths';
+import { site } from '../data/site';
+import inlineGlobals from '../styles/inline-globals.css?raw';
+import bodyScriptsLegal from '../partials/body-scripts-legal.html?raw';
+
+interface Props {
+  canonicalPath: string;
+  bodyClass: string;
+  webflowPageId: string;
+  bodyHtml: string;
+  headHtml: string;
+}
+
+const { canonicalPath, bodyClass, webflowPageId, bodyHtml, headHtml } = Astro.props;
+const canonical = new URL(canonicalPath, site.url).href;
+const head = rewriteAssetPaths(headHtml)
+  .replace(/<link href="[^"]+" rel="canonical"\/>/, `<link href="${canonical}" rel="canonical"/>`)
+  .replace(
+    '<meta content="width=device-width, initial-scale=1" name="viewport"/>',
+    '<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="index,follow" name="robots"/>',
+  );
+---
+
+<!DOCTYPE html>
+<html
+  data-wf-domain="www.miri-consulting.com"
+  data-wf-page={webflowPageId}
+  data-wf-site={site.webflowSiteId}
+  lang="en"
+>
+  <head set:html={head} />
+  <body class={bodyClass}>
+    <div class="page-wrapper">
+      <div class="global-styles w-embed">
+        <style is:inline is:global set:html={inlineGlobals}></style>
+      </div>
+      <main class="main-wrapper">
+        <NavBar variant="legal" />
+        <RawHtml html={bodyHtml} />
+        <Footer variant="legal" />
+      </main>
+    </div>
+    <RawHtml html={bodyScriptsLegal} />
+  </body>
+</html>

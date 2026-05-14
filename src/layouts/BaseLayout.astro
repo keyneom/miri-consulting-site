@@ -1,0 +1,84 @@
+---
+import { analytics, site, vendor } from '../data/site';
+import HeadAnalytics from '../components/analytics/HeadAnalytics.astro';
+import inlineGlobals from '../styles/inline-globals.css?raw';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  bodyClass: string;
+  webflowPageId: string;
+  includeFinsweet?: boolean;
+  robots?: string;
+  ogImage?: string | null;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  bodyClass,
+  webflowPageId,
+  includeFinsweet = false,
+  robots = 'index,follow',
+  ogImage = site.ogImage,
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, site.url).href;
+---
+
+<!DOCTYPE html>
+<html
+  data-wf-domain="www.miri-consulting.com"
+  data-wf-page={webflowPageId}
+  data-wf-site={site.webflowSiteId}
+  lang="en"
+>
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.prod.website-files.com" rel="preconnect" />
+    <title>{title}</title>
+    <meta content={description} name="description" />
+    <meta content={title} property="og:title" />
+    <meta content={description} property="og:description" />
+    {ogImage ? <meta content={ogImage} property="og:image" /> : null}
+    <meta content={title} property="twitter:title" />
+    <meta content={description} property="twitter:description" />
+    {ogImage ? <meta content={ogImage} property="twitter:image" /> : null}
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content={robots} name="robots" />
+    <meta content={analytics.gtmId} name="google-site-verification" />
+    <link href={vendor.webflowSharedCss} rel="stylesheet" type="text/css" />
+    <link href={vendor.overridesCss} rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <script src={vendor.webfont} type="text/javascript" is:inline></script>
+    <script is:inline>
+      WebFont.load({
+        google: {
+          families: ['Inter:300,400,500,600,700', 'Noto Sans:300,400,500,600,700'],
+        },
+      });
+    </script>
+    <script is:inline>
+      !function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
+    </script>
+    <link href={vendor.favicon} rel="shortcut icon" type="image/x-icon" />
+    <link href={vendor.webclip} rel="apple-touch-icon" />
+    <link href={canonical} rel="canonical" />
+    <HeadAnalytics includeFinsweet={includeFinsweet} />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <div class="page-wrapper">
+      <div class="global-styles w-embed">
+        <style is:inline is:global set:html={inlineGlobals}></style>
+      </div>
+      <slot />
+    </div>
+    <slot name="scripts" />
+  </body>
+</html>

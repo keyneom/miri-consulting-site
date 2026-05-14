@@ -1,0 +1,11 @@
+---
+import { rewriteAssetPaths } from '../utils/rewriteAssetPaths';
+
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+---
+
+<Fragment set:html={rewriteAssetPaths(html)} />
